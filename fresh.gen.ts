@@ -5,11 +5,16 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
-import * as $api_joke from "./routes/api/joke.ts";
-import * as $greet_name_ from "./routes/greet/[name].tsx";
+import * as $addPokemon from "./routes/addPokemon.tsx";
+import * as $api_checkPokemonName from "./routes/api/checkPokemonName.tsx";
+import * as $deletePokemon from "./routes/deletePokemon.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $pokedex from "./routes/pokedex.tsx";
-
+import * as $pokemon_name_ from "./routes/pokemon/[name].tsx";
+import * as $pokemonSearch from "./routes/pokemonSearch.tsx";
+import * as $AddForm from "./islands/AddForm.tsx";
+import * as $DeleteForm from "./islands/DeleteForm.tsx";
+import * as $SearchForm from "./islands/SearchForm.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -17,12 +22,19 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
-    "./routes/api/joke.ts": $api_joke,
-    "./routes/greet/[name].tsx": $greet_name_,
+    "./routes/addPokemon.tsx": $addPokemon,
+    "./routes/api/checkPokemonName.tsx": $api_checkPokemonName,
+    "./routes/deletePokemon.tsx": $deletePokemon,
     "./routes/index.tsx": $index,
     "./routes/pokedex.tsx": $pokedex,
+    "./routes/pokemon/[name].tsx": $pokemon_name_,
+    "./routes/pokemonSearch.tsx": $pokemonSearch,
   },
-  islands: {},
+  islands: {
+    "./islands/AddForm.tsx": $AddForm,
+    "./islands/DeleteForm.tsx": $DeleteForm,
+    "./islands/SearchForm.tsx": $SearchForm,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

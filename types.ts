@@ -6,6 +6,7 @@ export type Pokemon = {
 }
 
 export type PokemonProps = {
+    _id?: string;
     name: string;
     image: string;
     sound: string;

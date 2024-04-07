@@ -1,5 +1,6 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import PokedexContainer from "../components/PokedexContainer.tsx";
+import { DeleteForm } from "../islands/DeleteForm.tsx";
 import { Pokemon } from "../types.ts";
 import Axios from "npm:axios";
 
@@ -10,28 +11,27 @@ export const handler: Handlers = {
         "https://lospoquimones.deno.dev/"
       );
 
-        //if(response) console.log("funcionaaa")
-
       if (!response || response.status !== 200) {
-        throw new Error("Failed to connect with API!");
+        throw new Error("Failed to connect with API");
       }
 
       const pokemons = response.data;
-
-      //console.log("Son pokemons: " + pokemons)
-
       return ctx.render(pokemons);
 
     } catch (error) {
-      throw new Error("Failed to fetch pokemon data!");
+      throw new Error("Failed to fetch pokemon data");
     }
   },
 };
 
 const Page = (props: PageProps<Pokemon[]>) => {
   return (
-    <PokedexContainer pokemons={props.data} />
+    <div>
+      <h2>Pokemons Collection</h2>
+      <PokedexContainer pokemons={props.data}/>
+      <DeleteForm pokemon={props.data[0]}/>
+    </div>
   );
-}
+};
 
 export default Page;
